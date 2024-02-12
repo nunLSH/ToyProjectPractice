@@ -1,25 +1,40 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>테이블 데이터</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
 <body>
-
-<div class="container">
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>이름</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="member : ${members}">
-                <td th:text="${member.id}"></td>
-                <td th:text="${member.name}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-</div> <!-- /container -->
+<table>
+    <tr>
+        <th>금융회사 명</th>
+        <th>금융 상품명</th>
+        <th>가입 방법</th>
+        <th>대출종류명</th>
+        <th>CB 회사명</th>
+        <th>금리구분</th>
+        <th>평균 금리</th>
+    </tr>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.company}"></td>
+        <td th:text="${member.productName}"></td>
+        <td th:text="${member.method}"></td>
+        <td th:text="${member.loanType}"></td>
+        <td th:text="${member.cbCompany}"></td>
+        <td th:text="${member.rateType}"></td>
+        <td th:text="${member.averageRate}"></td>
+    </tr>
+</table>
 </body>
 </html>
+

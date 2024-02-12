@@ -4,19 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import smu.toyproject1.domain.Member;
+import smu.toyproject1.product.CreditLoan;
+import smu.toyproject1.repository.JdbcDBConnection;
 import smu.toyproject1.service.MemberService;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class MemberController {
+public class ProductController {
 
     private final MemberService memberService;
 
+    private JdbcDBConnection jdbcDBConnection;
+
     @Autowired
-    public MemberController(MemberService memberService) {
+    public ProductController(MemberService memberService) {
         this.memberService = memberService;
     }
 
@@ -30,19 +34,19 @@ public class MemberController {
 
     // 보통 데이터를 등록할 때는 post, 조회할 때는 get
     // url은 위와 똑같지만 post 방식인 아래의 메소드가 선택이 됨.
-    @PostMapping("/members/new")
-    public String create(MemberForm form) {
-        Member member = new Member();
-        member.setName(form.getName());
-
-        memberService.join(member);
-
-        return "redirect:/";
-    }
-    @GetMapping("/members")
+//    @PostMapping("/members/new")
+//    public String create(MemberForm form) {
+//        Member member = new Member();
+//        member.setName(form.getName());
+//
+//        memberService.join(member);
+//
+//        return "redirect:/";
+//    }
+    @GetMapping("/creditLoan")
     public String list(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
+        List<CreditLoan> creditLoans = jdbcDBConnection.retrieveDataFromTable("신용대출");
+        model.addAttribute("members", creditLoans);
         return "members/memberList";
     }
 }
