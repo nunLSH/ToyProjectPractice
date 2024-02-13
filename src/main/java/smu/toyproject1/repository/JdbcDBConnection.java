@@ -1,7 +1,7 @@
 package smu.toyproject1.repository;
 
 import org.springframework.stereotype.Component;
-import smu.toyproject1.product.CreditLoan;
+import smu.toyproject1.entity.CreditLoanProduct;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.List;
 public class JdbcDBConnection {
     public static Connection getConnection() {
         // 데이터베이스 연결 정보
-        String url = "jdbc:mysql://database-1.c9i0ceu2mgty.ap-northeast-2.rds.amazonaws.com:3306/febtoyproject1"; // 데이터베이스 URL
-        String username = "shLim"; // 사용자명
-        String password = "febtoy222*"; // 비밀번호
+        String url = "jdbc:mysql://[나의엔드포인트]:3306/[데이터베이스명]"; // 데이터베이스 URL
+        String username = "[사용자명]"; // 사용자명
+        String password = "[비밀번호]"; // 비밀번호
 
         Connection connection = null;
 
@@ -49,11 +49,11 @@ public class JdbcDBConnection {
         }
     }
 
-    public static List<CreditLoan> retrieveDataFromTable(String tableName) {
+    public static List<CreditLoanProduct> retrieveDataFromTable(String tableName) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<CreditLoan> creditLoans = new ArrayList<>();
+        List<CreditLoanProduct> creditLoans = new ArrayList<>();
 
         try {
             connection = getConnection();
@@ -71,7 +71,7 @@ public class JdbcDBConnection {
                     String rateType = resultSet.getString("금리구분");
                     int averageRate = resultSet.getInt("평균 금리");
 
-                    CreditLoan creditLoan = new CreditLoan(company, productName, method, loanType, cbCompany, rateType, averageRate);
+                    CreditLoanProduct creditLoan = new CreditLoanProduct(company, productName, method, loanType, cbCompany, rateType, averageRate);
                     creditLoans.add(creditLoan);
                 }
             }
@@ -98,73 +98,3 @@ public class JdbcDBConnection {
         return creditLoans;
     }
 }
-
-
-
-
-
-
-
-
-//    public static Connection getConnection() {
-//        Connection conn = null;
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            conn = DriverManager.getConnection(
-//                    "jdbc:mysql://database-1.c9i0ceu2mgty.ap-northeast-2.rds.amazonaws.com:3306/febtoyproject1",
-//                    "shLim",
-//                    "febtoy222*");
-//            conn.setAutoCommit(false);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return conn;
-//    }
-//    public static void close(Connection conn) {
-//        try {
-//            if(conn != null && !conn.isClosed())
-//                conn.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public static void close(Statement stmt) {
-//        try {
-//            if(stmt != null && !stmt.isClosed())
-//                stmt.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public static void close(ResultSet rset) {
-//        try {
-//            if(rset != null && !rset.isClosed())
-//                rset.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public static void commit(Connection conn) {
-//        try {
-//            if(conn != null & !conn.isClosed())
-//                conn.commit();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public static void rollback(Connection conn) {
-//        try {
-//            if(conn != null & !conn.isClosed())
-//                conn.commit();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//}

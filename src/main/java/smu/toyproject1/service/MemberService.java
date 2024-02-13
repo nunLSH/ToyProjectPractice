@@ -1,14 +1,14 @@
-package smu.toyproject1.service;
-
-import org.springframework.stereotype.Service;
+//package smu.toyproject1.service;
+//
+//import org.springframework.stereotype.Service;
 //import smu.toyproject1.repository.MemoryMemberRepository;
-
-
-@Service
-public class MemberService {
-
+//
+//
+//@Service
+//public class MemberService {
+//
 //    private final MemberRepository memberRepository;
-
+//
 //    // MemberRepository를 외부에서 넣어주는 코드 -> DI (Dependency Injection)
 //    public MemberService(MemberRepository memberRepository) {
 //        this.memberRepository = memberRepository;
@@ -31,10 +31,10 @@ public class MemberService {
 //                    throw new IllegalStateException("이미 존재하는 회원입니다.");
 //                });
 //    }
-
-    /**
-//     * 전체 회원 조회
-//     */
+//
+//    /**
+////     * 전체 회원 조회
+////     */
 //    public List<Member> findMembers() {
 //        return memberRepository.findAll();
 //    }
@@ -43,4 +43,4 @@ public class MemberService {
 //    public Optional<Member> findOne(Long memberId) {
 //        return memberRepository.findById(memberId);
 //    }
-}
+//}

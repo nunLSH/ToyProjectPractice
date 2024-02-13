@@ -1,6 +1,6 @@
-package smu.toyproject1.product;
+package smu.toyproject1.entity;
 
-public class CreditLoan {
+public class CreditLoanProduct {
 
     private String company;
     private String productName;
@@ -10,7 +10,7 @@ public class CreditLoan {
     private String rateType;
     private int averageRate;
 
-    public CreditLoan(String company, String productName, String method, String loanType, String cbCompany, String rateType, int averageRate) {
+    public CreditLoanProduct(String company, String productName, String method, String loanType, String cbCompany, String rateType, int averageRate) {
         this.company = company;
         this.productName = productName;
         this.method = method;
