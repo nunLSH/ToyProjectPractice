@@ -11,7 +11,7 @@ import java.util.List;
 public class JdbcDBConnection {
     public static Connection getConnection() {
         // 데이터베이스 연결 정보
-        String url = "jdbc:mysql://[나의엔드포인트]:3306/[데이터베이스명]"; // 데이터베이스 URL
+        String url = "jdbc:mysql://[앤드포인트]:3306/[데이터베이스명]"; // 데이터베이스 URL
         String username = "[사용자명]"; // 사용자명
         String password = "[비밀번호]"; // 비밀번호
 
